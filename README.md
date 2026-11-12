@@ -39,11 +39,8 @@ Then run `npm run dev` and open http://localhost:8788. The server restarts by it
 ## Put it online (Coolify on your VPS)
 
 1. Push this folder to a GitHub repository (private is fine).
-2. In Coolify: **+ New → Application**, pick the repository and the branch. Build pack: **Nixpacks** (it detects Node and runs `npm start`).
-3. **Environment variables:**
-   - `FAMILY_PASSWORD`: the password you give your family
-   - `DATA_DIR` = `/data`
-   - `PORT` = `3000`, and set **Ports Exposes** to `3000`
+2. In Coolify: **+ New → Application**, pick the repository and the branch. Build pack: **Dockerfile** (uses the `Dockerfile` in this repo; no extra tools needed on the server). **Ports Exposes:** `3000`.
+3. **Environment variable:** `FAMILY_PASSWORD`, the password you give your family (runtime only, not needed during build). `DATA_DIR=/data` and `PORT=3000` are already set in the Dockerfile.
 4. **Persistent storage → + Add**: a volume mounted at `/data`. Without it every redeploy wipes the claims.
 5. **Domains:** `https://wishlist.<yourdomain>.dev`
 6. At your domain provider, add a DNS record: type `A`, name `wishlist`, value: your VPS's IP address.
