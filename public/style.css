@@ -503,7 +503,10 @@ dialog input { display: block; width: 100%; margin-top: 4px; padding: 6px; font:
   .title { top: 14px; font-size: 13px; }
   .title small { font-size: 8px; }
   .layout { grid-template-columns: 1fr; padding: 12px; }
-  .nav { flex-direction: row; flex-wrap: wrap; }
+  /* Two equal columns instead of wrapping like words; an odd last button spans both. */
+  .nav { display: grid; grid-template-columns: 1fr 1fr; }
+  .nav a { display: flex; align-items: center; min-height: 40px; }
+  .nav a:last-child:nth-child(odd) { grid-column: 1 / -1; justify-content: center; }
   .widgets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .mine-box, .key-box { grid-column: 1 / -1; }
   .item { grid-template-columns: 72px 1fr; gap: 12px; }
