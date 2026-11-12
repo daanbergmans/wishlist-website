@@ -1,6 +1,6 @@
 # Het Verlanglijstje van Daan
 
-A retro pixel-art wishlist set around a campfire in a night-time forest. Family can claim a gift with a shared password, so nobody buys the same thing twice.
+A retro pixel-art wishlist set around a campfire in a night-time forest. Family, friends and anyone else you share it with can claim a gift with a shared password, so nobody buys the same thing twice.
 
 - `public/`: the site (plain HTML/CSS/JS, no build step)
   - `items.json` is **the list**: edit this to add, change or remove gifts
@@ -40,7 +40,7 @@ Then run `npm run dev` and open http://localhost:8788. The server restarts by it
 
 1. Push this folder to a GitHub repository (private is fine).
 2. In Coolify: **+ New → Application**, pick the repository and the branch. Build pack: **Dockerfile** (uses the `Dockerfile` in this repo; no extra tools needed on the server). **Ports Exposes:** `3000`.
-3. **Environment variable:** `FAMILY_PASSWORD`, the password you give your family (runtime only, not needed during build). `DATA_DIR=/data` and `PORT=3000` are already set in the Dockerfile.
+3. **Environment variable:** `FAMILY_PASSWORD`, the password you give family and friends (runtime only, not needed during build). `DATA_DIR=/data` and `PORT=3000` are already set in the Dockerfile.
 4. **Persistent storage → + Add**: a volume mounted at `/data`. Without it every redeploy wipes the claims.
 5. **Domains:** `https://wishlist.<yourdomain>.dev`
 6. At your domain provider, add a DNS record: type `A`, name `wishlist`, value: your VPS's IP address.

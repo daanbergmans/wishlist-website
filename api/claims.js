@@ -1,6 +1,6 @@
 // /api/claims, called by server.js.
 // env.CLAIMS stores one key per claimed item: "claim:<id>" -> { name, token, at }.
-// env.FAMILY_PASSWORD is the password the family needs to claim something.
+// env.FAMILY_PASSWORD is the shared password visitors need to claim something.
 
 const json = (body, status = 200) => Response.json(body, { status });
 const readBody = (request) => request.json().catch(() => ({}));
