@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nl-BE">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Verlanglijstje van Daan</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon"
+		href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>🔥</text></svg>">
+	<script src="sprites.js" defer></script>
+	<script src="app.js" defer></script>
+</head>
+
+<body>
+	<a class="skip-link" href="#main">Naar de inhoud</a>
+
+	<div class="site">
+		<header class="site__header">
+			<div class="scene" id="scene" aria-hidden="true"></div>
+			<h1 class="title">Het Verlanglijstje van Daan<small>~ rond het kampvuur ~</small></h1>
+		</header>
+
+		<div class="marquee" aria-hidden="true">
+			<span>★ Welkom bij het kampvuur! ★ Niet aan Tio z'n staart trekken a.u.b. ★ Kies een cadeau, claim het, en
+				niemand koopt hetzelfde ★ Opgelet: hier wordt met zwaarden gezwaaid ★ Bedankt voor uw bezoek! ★</span>
+		</div>
+
+		<div class="layout">
+			<aside class="sidebar">
+				<nav aria-label="Categorieën">
+					<div class="nav" id="nav"></div>
+				</nav>
+
+				<div class="widgets">
+					<p class="mine-box">Door u geregeld <b id="mine-count">0</b></p>
+
+					<div class="widget">
+						<p>Ge zijt bezoeker</p>
+						<p class="counter" id="counter">000000</p>
+					</div>
+
+					<div class="lcd" aria-hidden="true">
+						<p id="print-status">PRINTEN...</p>
+						<div class="lcd__bar"><i id="print-bar"></i></div>
+						<p><span id="print-pct">0%</span> · laag <span id="print-layer">000</span>/240</p>
+						<p>Nozzle 215°C</p>
+					</div>
+				</div>
+			</aside>
+
+			<main id="main">
+				<section class="intro">
+					<h2>Dag en welkom!</h2>
+					<p>Hier vindt ge wat ik graag zou krijgen. Bij elk cadeau staan winkels waar ge het kunt vinden. Wilt ge
+						iets geven? Claim het hier, dan weet de rest van de familie dat het al geregeld is.</p>
+					<h3>Hoe werkt het?</h3>
+					<ol>
+						<li>Kies een cadeau en klik op <b>Ik koop dit!</b></li>
+						<li>Vul uw naam in en het familiewachtwoord dat ge van mij kreeg.</li>
+						<li>Het cadeau staat nu als geregeld. Toch van gedacht veranderd? Op dezelfde computer kunt ge het
+							weer vrijgeven.</li>
+					</ol>
+				</section>
+
+				<div id="list">
+					<p class="loading">Laden...</p>
+				</div>
+			</main>
+		</div>
+
+		<footer class="footer">
+			<div class="lego" id="lego-wall" aria-hidden="true"></div>
+			Gemaakt met ♥, soldeertin en kattenhaar · Laatst bijgewerkt: november 2026
+		</footer>
+	</div>
+
+	<dialog id="claim-dialog" aria-labelledby="claim-title">
+		<form method="dialog" id="claim-form">
+			<h2 id="claim-title">Cadeau claimen</h2>
+			<p>Ge claimt: <b id="claim-what"></b></p>
+			<label>Uw naam <input name="naam" required maxlength="60" autocomplete="name"></label>
+			<label>Familiewachtwoord <input name="wachtwoord" type="password" required autocomplete="off"></label>
+			<p class="error" id="claim-error" role="alert"></p>
+			<div class="dialog__actions">
+				<button class="btn" type="button" onclick="this.closest('dialog').close()">Annuleren</button>
+				<button class="btn btn--gold" value="ok">Claimen!</button>
+			</div>
+		</form>
+	</dialog>
+</body>
+
+</html>

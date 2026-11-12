@@ -1,0 +1,226 @@
+{
+	"categories": [
+		{ "id": "hema", "name": "HEMA", "icon": "⚔️" },
+		{ "id": "bushcraft", "name": "Bushcraft & wandelen", "icon": "🏕️" },
+		{
+			"id": "homelab",
+			"name": "Homelab",
+			"icon": "🖥️",
+			"sprite": "computer"
+		},
+		{
+			"id": "maken",
+			"name": "3D-print, solderen & PCB",
+			"icon": "🛠️"
+		},
+		{ "id": "diy", "name": "DIY", "icon": "🔧" },
+		{ "id": "smidse", "name": "Smidse & boogbouw", "icon": "🔨" },
+		{ "id": "lego", "name": "LEGO", "icon": "🧱", "sprite": "brick" },
+		{ "id": "spelletjes", "name": "Gezelschaps­spelletjes", "icon": "🎲" },
+		{
+			"id": "altijd",
+			"name": "Altijd welkom",
+			"icon": "🎁",
+			"sprite": "gift",
+			"note": "Hier moet ge niets claimen: dit mag iedereen geven."
+		}
+	],
+	"items": [
+		{
+			"id": "hema-dagger",
+			"category": "hema",
+			"priceCents": 2900,
+			"title": "Synthetische trainingsdolk",
+			"description": "Een middeleeuwse dolk in kunststof om veilig dolkgevechten en ontwapeningen te oefenen. Want soms is de feder net iets te lang.",
+			"links": [
+				{
+					"shop": "Faits D'Armes",
+					"url": "https://faitsdarmes.com/nl/synthetische-dolken/169-synthetisch-middeleeuws-dolk.html"
+				}
+			]
+		},
+		{
+			"id": "hema-deck",
+			"category": "hema",
+			"priceCents": 2600,
+			"title": "HEMA Deck: kaarten met posities en technieken",
+			"description": "Een kaartspel vol hoeden, stoten en slagen uit het tijdperk der langzwaarden. Handig om thuis te oefenen en om op training eens een willekeurige techniek te trekken.",
+			"links": [
+				{
+					"shop": "Zwaard en volk",
+					"url": "https://woo.zwaardenvolk.nl/webshop/boeken/hema/hema-deck/"
+				}
+			]
+		},
+		{
+			"id": "bushcraft-vuurstaal",
+			"category": "bushcraft",
+			"priceCents": 1500,
+			"title": "Bushcraft vuurstaal",
+			"description": "Een vuurstaal. Voor als de wereld ooit vergaat en ik het koud heb.",
+			"links": [
+				{
+					"shop": "Decathlon",
+					"url": "https://www.decathlon.be/nl/p/mp/flint-elementerre-silex/df5df970-9d0e-4098-ae2c-ca03af8cef33/c1"
+				},
+				{
+					"shop": "Decathlon",
+					"url": "https://www.decathlon.be/nl/p/mp/light-my-fire-firesteel-bio-scout-cocoshell/13e21815-8a1e-4d7d-8970-bf5339675af0/c27"
+				}
+			]
+		},
+		{
+			"id": "wandelsokken",
+			"category": "bushcraft",
+			"priceCents": 2499,
+			"title": "Merino wandelsokken",
+			"description": "Warme voeten, blije wandelaar. Maat 41-42",
+			"links": [
+				{
+					"shop": "Decathlon",
+					"url": "https://www.decathlon.be/nl/p/hoge-wandelsokken-van-merinowol-voor-volwassenen-hike-900-grijs-2-paar/330146/c71m8647192"
+				}
+			]
+		},
+		{
+			"id": "nas",
+			"category": "homelab",
+			"perpetual": true,
+			"title": "Bijdrage aan het homelab-fonds",
+			"description": "Ik spaar voor een eigen thuisserver (doel: € 250). Elk bedrag helpt, groot of klein. Zie het als een investering: eens hij draait, kan ik films en series streamen voor de hele familie. Uw bijdrage verdient zichzelf dus misschien terug in gratis filmavonden!"
+		},
+		{
+			"id": "filament",
+			"category": "maken",
+			"priceCents": 1945,
+			"title": "Rol PLA-filament",
+			"description": "Voor het printen van de meest onnuttige dingetjes.",
+			"links": [
+				{
+					"shop": "Bol",
+					"url": "https://www.bol.com/be/nl/p/esun-pla-basic-1-75-mm-1kg-filament-bruin-one-size-eu-plug-220v/9300000229276471/?cid=1794338981602-6871957584474"
+				}
+			]
+		},
+		{
+			"id": "boogboek",
+			"category": "smidse",
+			"priceCents": 1800,
+			"title": "Boek: Teaching the Bow to Bend...",
+			"description": "Van een stuk hout naar een echte boog.",
+			"links": [
+				{
+					"shop": "Bol",
+					"url": "https://www.bol.com/be/nl/p/teaching-the-bow-to-bend/9200000022519832/?cid=1794338931891-2901603805427"
+				}
+			]
+		},
+		{
+			"id": "lego-set",
+			"category": "lego",
+			"title": "LEGO-set naar keuze",
+			"description": "Uit de wereld van Star Wars, The Lord of The Rings, of een simpel bloemetje: ge kunt echt niet mis zitten.",
+			"links": [
+				{
+					"shop": "Bol",
+					"url": "https://www.bol.com/be/nl/s/?searchtext=lego"
+				}
+			]
+		},
+		{
+			"id": "skull-king",
+			"category": "spelletjes",
+			"priceCents": 1000,
+			"title": "Skull King",
+			"description": "Piratenkaartspel waarin ge moet voorspellen hoeveel slagen ge haalt.",
+			"links": [
+				{
+					"shop": "Bol",
+					"url": "https://www.bol.com/be/nl/p/ravensburger-skull-king-kaartspel/9300000172905649/?cid=1794338561964-9595126104225"
+				},
+				{
+					"shop": "Amazon",
+					"url": "https://www.amazon.com.be/-/en/Ravensburger-227488-Skull-King-AANBIEDING/dp/B0CW3737VH"
+				}
+			]
+		},
+		{
+			"id": "machiavelli",
+			"category": "spelletjes",
+			"priceCents": 2599,
+			"title": "Machiavelli",
+			"description": "Kaartspel vol bluf en verraad: om ter snelst de beste stad bouwen.",
+			"links": [
+				{
+					"shop": "Bol",
+					"url": "https://www.bol.com/be/nl/p/machiavelli-kaartspel/9300000101661246/?cid=1794338652475-1885487218145"
+				}
+			]
+		},
+		{
+			"id": "horrible-therapist",
+			"category": "spelletjes",
+			"priceCents": 2089,
+			"title": "Horrible Therapist",
+			"description": "Partyspel waarin ge elkaars problemen zo slecht mogelijk oplost.",
+			"links": [
+				{
+					"shop": "Amazon",
+					"url": "https://www.amazon.com.be/-/en/Exploding-Kittens-Horrible-Therapist-Game/dp/B0DP62PFJ2"
+				}
+			]
+		},
+		{
+			"id": "clank",
+			"category": "spelletjes",
+			"priceCents": 5730,
+			"title": "Clank!",
+			"description": "Sluip een kerker in steel een schat zonder de draak wakker te maken. Anders staan er gebraden mensen op het menu.",
+			"links": [
+				{
+					"shop": "Bol",
+					"url": "https://www.bol.com/be/nl/p/dire-wolf-digital-clank-master-thief-edition/9300000436565491/?cid=1794338756562-7985231166355"
+				}
+			]
+		},
+		{
+			"id": "risk",
+			"category": "spelletjes",
+			"priceCents": 3599,
+			"title": "Risk",
+			"description": "De klassieker: verover de wereld (en verlies een paar vrienden).",
+			"links": [
+				{
+					"shop": "Bol",
+					"url": "https://www.bol.com/be/nl/p/risk-bordspel/9200000058617186/?cid=1794338811336-7990572324401"
+				}
+			]
+		},
+		{
+			"id": "bosch-ratelset",
+			"category": "diy",
+			"title": "Bosch 14-delige set met 1/4\" ratel",
+			"description": "Een compacte doppenset met ratel: voor alles wat kapot is, of in elkaar te steken valt.",
+			"links": [
+				{
+					"shop": "Amazon",
+					"url": "https://www.amazon.com.be/-/en/gp/product/B0C3CN368P?th=1"
+				}
+			]
+		},
+		{
+			"id": "cash",
+			"category": "altijd",
+			"perpetual": true,
+			"title": "Cash",
+			"description": "Als ge het echt niet weet: een centje is altijd welkom en gaat recht naar een van mijn projecten."
+		},
+		{
+			"id": "zelfgemaakt",
+			"category": "altijd",
+			"perpetual": true,
+			"title": "Iets zelfgemaakts",
+			"description": "Een tekening, een taart, een gebreide sjaal... daar word ik altijd blij van."
+		}
+	]
+}
