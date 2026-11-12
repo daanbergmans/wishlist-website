@@ -146,6 +146,11 @@ body {
 /* ---------- Layout ---------- */
 .layout { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 16px; }
 .sidebar, .widgets, .nav { display: flex; flex-direction: column; gap: 12px; }
+/* On wide screens the sidebar travels along while scrolling; on short screens it scrolls on its own. */
+@media (min-width: 721px) {
+  /* 100vh is enlarged by the page zoom, so divide it back out to really fit the screen. */
+  .sidebar { position: sticky; top: 16px; align-self: start; max-height: calc(100vh / var(--zoom, 1) - 32px); overflow-y: auto; scrollbar-width: thin; }
+}
 .nav { gap: 6px; }
 
 .nav a, .btn, .mine-box {
@@ -432,7 +437,7 @@ dialog input { display: block; width: 100%; margin-top: 4px; padding: 6px; font:
 }
 
 /* Slightly bigger on computer screens. */
-@media (min-width: 1100px) { body { zoom: 1.1; } }
+@media (min-width: 1100px) { :root { --zoom: 1.1; } body { zoom: var(--zoom); } }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before { animation: none !important; }
