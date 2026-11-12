@@ -12,6 +12,9 @@ const PAL = {
   // category icons: brick red with highlight and shadow, gold ribbon
   R: '#d01012', E: '#ff6f5e', D: '#7c0a0a', Y: '#f2cd37', O: '#b8860b',
   V: '#39ff6a', v: '#0b3d1a', // terminal screen
+  P: '#ff6b8a', // hearts when Tio is petted
+  // tent: lit canvas edge, shaded side, its outline, dark inside, firelight inside, shadow on the grass
+  C: '#f0d595', c: '#a8823f', q: '#5e4520', i: '#1c120c', I: '#7a3a18', Q: '#1f2c1c',
 };
 
 const SPR = {
@@ -44,17 +47,24 @@ const SPR = {
     '..mmmmmm..',
     '...mmmm...',
   ],
+  // Canvas tent lit by the campfire on its right: lit right side (a, C), shaded left side (c, q),
+  // open door with firelight glowing inside (i, I), folded-back flap (C), pole with pennant, pegs and a ground shadow.
   tent: [
-    '.........K..........',
-    '........KaK.........',
-    '.......KaaaK........',
-    '......KaaaaaK.......',
-    '.....KaaaKaaaK......',
-    '....KaaaKKKaaaK.....',
-    '...KaaaKKKKKaaaK....',
-    '..KaaaKKKKKKKaaaK...',
-    '.KaaaKKKKKKKKKaaaK..',
-    'KAAAAKKKKKKKKKKAAAAK',
+    '...........brr..........',
+    '...........br...........',
+    '...........b............',
+    '..........qaA...........',
+    '.........qcaCA..........',
+    '........qccaCCA.........',
+    '.......qccciCaaA........',
+    '......qcccciCaaaA.......',
+    '.....qcccciIiCaaaA......',
+    '....qccccciIiCaaaaA.....',
+    '...qccccciIIIiCaaaaA....',
+    '..qcccccciIIIiCaaaaaA...',
+    '.qcccccciIIIIIiCaaaaaA..',
+    'qccccccciIIIIIiCaaaaaaA.',
+    'bQQQQQQQQQQQQQQQQQQQQQb.',
   ],
   fire1: [
     '.....o......',
@@ -216,6 +226,29 @@ const SPR = {
     '.....dgdg....dgdg.',
     '.....dddd....dddd.',
   ],
+  // Tio after one tail pull too many: arched back, spiky fur, bushy tail up, ears flat, mouth open.
+  tioAngry: [
+    '.d.d..............',
+    '.ddd...d.d.d......',
+    '.dGd..dgdgdgd.....',
+    '.dGd.dgggggggd....',
+    '.dGddgggggggggd.dd',
+    '..ddgggggggggggggd',
+    '....dggggggggggeKd',
+    '....dGGGGGGGGgggNd',
+    '....dGGGGGGGGddpd.',
+    '.....dg.....dg....',
+    '.....dg.....dg....',
+    '.....dd.....dd....',
+  ],
+  heart: [
+    '.PP.PP.',
+    'PPPPPPP',
+    'PPPPPPP',
+    '.PPPPP.',
+    '..PPP..',
+    '...P...',
+  ],
 };
 
 // Turns a sprite into an SVG; runs of the same colour become one rect.
@@ -231,7 +264,7 @@ function svg(rows, swap = {}) {
       x += n;
     }
   });
-  return `<svg viewBox="0 0 ${w} ${h}" shape-rendering="crispEdges" style="--w:${w};--h:${h}">${rects}</svg>`;
+  return `<svg viewBox="0 0 ${w} ${h}" shape-rendering="crispEdges" aria-hidden="true" focusable="false" style="--w:${w};--h:${h}">${rects}</svg>`;
 }
 
 function buildScene(root) {

@@ -113,6 +113,63 @@ body {
   95% { opacity: 0; }
 }
 
+/* ---------- Tio reacts (see tio.js) ---------- */
+.front .tio {
+  cursor: pointer; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; touch-action: manipulation;
+  transition: transform 3s linear, translate .1s; /* 3s = the walk back after running off */
+}
+.front .tio:focus-visible { outline: 2px dashed var(--gold); outline-offset: 4px; }
+/* While petted, annoyed or gone he stops his stroll (and !important beats the running animations). */
+.front .tio.is-busy, .tio.is-busy .tio-sit, .tio.is-busy .tio-walk { animation-play-state: paused; }
+/* Interrupted mid-walk he sits down where he is, instead of walking on the spot.
+   (The angry, gone and returning rules below come later and override this.) */
+.tio.is-busy .tio-sit { opacity: 1 !important; }
+.tio.is-busy .tio-walk { opacity: 0 !important; }
+.front .tio.is-hopping { translate: 0 calc(var(--px) * -2); }
+
+.tio-angry { position: absolute; left: 0; bottom: 0; opacity: 0; }
+.tio.is-angry .tio-sit, .tio.is-angry .tio-walk { opacity: 0 !important; }
+.tio.is-angry .tio-angry { opacity: 1; animation: tremble .16s steps(2) infinite; }
+
+/* Running off to the right, then walking back from the right. */
+.front .tio.is-gone { transform: translateX(110vw); transition: transform .9s ease-in; }
+.tio.is-gone .tio-sit, .tio.is-returning .tio-sit { opacity: 0 !important; }
+.tio.is-gone .tio-walk, .tio.is-returning .tio-walk { opacity: 1 !important; transform: none !important; }
+.tio.is-returning .tio-walk { transform: scaleX(-1) !important; }
+.tio.is-gone .tio-walk .frames { --speed: .12s; }
+
+.tio-bubble {
+  position: absolute; left: 50%; bottom: calc(100% + 8px); translate: -50% 0; margin: 0; padding: 5px 7px;
+  white-space: nowrap; font: 8px/1 var(--pixel); color: var(--ink); background: #fff; border: 2px solid var(--ink);
+  opacity: 0; transition: opacity .15s; pointer-events: none;
+}
+.tio-bubble::after {
+  content: ''; position: absolute; left: 50%; top: 100%; translate: -50% 0;
+  border: 5px solid transparent; border-top-color: var(--ink);
+}
+.tio-bubble.is-shown { opacity: 1; }
+.tio.is-angry .tio-bubble { color: var(--red); }
+
+.tio .heart { --px: calc(var(--unit) * .5); position: absolute; bottom: 60%; pointer-events: none; animation: heart-up 1.4s ease-out forwards; }
+
+.claws { position: fixed; inset: 0; z-index: 50; pointer-events: none; overflow: hidden; }
+.claws i {
+  position: absolute; left: 8%; width: 84%; height: 14px; rotate: -28deg;
+  background: linear-gradient(#ffb3bd 0 3px, #d0405a 3px 10px, #5a0d16 10px);
+  animation: claw-in .22s steps(6) both, claw-fade .8s 2.2s forwards;
+}
+.claws i:nth-child(1) { top: 38%; }
+.claws i:nth-child(2) { top: 48%; animation-delay: .06s, 2.2s; }
+.claws i:nth-child(3) { top: 58%; animation-delay: .12s, 2.2s; }
+.site.is-shaking { animation: shake .45s steps(6); }
+
+@keyframes tremble { 50% { translate: 1px 0; } }
+@keyframes heart-up { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-46px); } }
+@keyframes claw-in { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes claw-fade { to { opacity: 0; } }
+@keyframes shake { 20% { translate: -6px 2px; } 40% { translate: 5px -3px; } 60% { translate: -4px 1px; } 80% { translate: 3px 0; } }
+.marquee.is-angry { color: #ff5a5a; border-color: #ff5a5a; }
+
 .firefly {
   width: 3px; height: 3px; background: #e9ff70; box-shadow: 0 0 6px 2px #e9ff7088;
   opacity: 0; animation: float 7s ease-in-out infinite;
@@ -140,16 +197,17 @@ body {
 /* The text is in there twice (see app.js); sliding by half makes a seamless loop. */
 /* It waits a moment on page load, so the first words can be read before they slide away. */
 .marquee span { display: inline-block; animation: marquee 22s linear 2.5s infinite; }
-.marquee b { font-weight: normal; padding-right: 3em; }
+.marquee b { font-weight: normal; white-space: pre; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Layout ---------- */
 .layout { display: grid; grid-template-columns: 200px 1fr; gap: 16px; padding: 16px; }
 .sidebar, .widgets, .nav { display: flex; flex-direction: column; gap: 12px; }
-/* On wide screens the sidebar travels along while scrolling; on short screens it scrolls on its own. */
+/* On wide screens only the 3D-printer display travels along while scrolling, so you can watch it print.
+   `display: contents` makes it a direct child of the full-height sidebar column, which is what it sticks within. */
 @media (min-width: 721px) {
-  /* 100vh is enlarged by the page zoom, so divide it back out to really fit the screen. */
-  .sidebar { position: sticky; top: 16px; align-self: start; max-height: calc(100vh / var(--zoom, 1) - 32px); overflow-y: auto; scrollbar-width: thin; }
+  .widgets { display: contents; }
+  .lcd { position: sticky; top: 16px; }
 }
 .nav { gap: 6px; }
 
@@ -411,6 +469,7 @@ h2 { font: 14px/1.5 var(--pixel); color: var(--red); }
 @keyframes drop { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: none; } }
 
 .footer { padding: 12px; text-align: center; font-size: 12px; color: #a99; }
+.footer__credit { margin: 6px 0 0; font-style: italic; }
 
 /* ---------- Claim dialog ---------- */
 dialog { width: calc(100% - 32px); max-width: 380px; padding: 0; background: var(--grey); border: 4px outset #ddd; }
@@ -442,4 +501,6 @@ dialog input { display: block; width: 100%; margin-top: 4px; padding: 6px; font:
 @media (prefers-reduced-motion: reduce) {
   *, *::before { animation: none !important; }
   .lego .brick { opacity: 1 !important; }
+  .front .tio { transition: none; } /* he simply vanishes and reappears instead of running */
+  .tio .heart { display: none; }
 }

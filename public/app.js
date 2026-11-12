@@ -169,8 +169,11 @@ form.addEventListener('submit', async (e) => {
 });
 
 // ---------- Start ----------
+// The banner runs its text twice in a row for a seamless loop. Each copy drops its closing ★ and ends in a space,
+// so where one copy meets the next there is exactly one ★, spaced like all the others.
 const marquee = $('.marquee span');
-marquee.innerHTML = `<b>${marquee.innerHTML}</b>`.repeat(2);
+const bannerText = marquee.textContent.replace(/\s+/g, ' ').trim().replace(/\s*★$/, '');
+marquee.innerHTML = `<b>${esc(bannerText)} </b>`.repeat(2);
 
 addEventListener('scroll', updatePrinter, { passive: true });
 updatePrinter();
