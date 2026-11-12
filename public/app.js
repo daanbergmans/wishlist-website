@@ -10,6 +10,40 @@ const store = (area) => ({
 const local = store(() => localStorage);
 const session = store(() => sessionStorage);
 
+// A share link like https://…/#wachtwoord=kampvuur (or ?wachtwoord=…) hands the visitor the password.
+// The part after # never reaches the server, so the password stays out of its logs. It's kept for this visit
+// and taken out of the address bar, so the link isn't copied along with it by accident.
+function passwordFromLink() {
+  const fromLink = new URLSearchParams(location.hash.slice(1)).get('wachtwoord')
+    ?? new URLSearchParams(location.search).get('wachtwoord');
+  const password = fromLink?.trim().slice(0, 100);
+  if (password) {
+    session.set('wachtwoord', password);
+    history.replaceState(null, '', location.pathname);
+  }
+  return password || session.get('wachtwoord', '');
+}
+let linkPassword = '';
+let passwordVisible = false;
+function showLinkPassword() {
+  linkPassword = passwordFromLink();
+  $('#key-box').hidden = !linkPassword;
+  renderKey();
+}
+// Hidden behind 8 dots by default (always 8, so the length isn't given away); the eye button reveals it.
+function renderKey() {
+  $('#key-value').textContent = passwordVisible ? linkPassword : '••••••••';
+  const eye = $('#key-eye');
+  eye.innerHTML = svg(passwordVisible ? SPR.eyeClosed : SPR.eyeOpen);
+  eye.setAttribute('aria-pressed', passwordVisible);
+  eye.setAttribute('aria-label', passwordVisible ? 'Wachtwoord verbergen' : 'Wachtwoord tonen');
+  eye.title = eye.getAttribute('aria-label');
+}
+$('#key-eye').addEventListener('click', () => { passwordVisible = !passwordVisible; renderKey(); });
+showLinkPassword();
+// A share link opened in a tab that already shows the page only changes the #-part, without reloading.
+addEventListener('hashchange', () => { if (location.hash.includes('wachtwoord=')) showLinkPassword(); });
+
 let data = { categories: [], items: [] };
 let claimed = new Set();
 
@@ -119,6 +153,7 @@ $('#list').addEventListener('click', async (e) => {
     pendingId = claimBtn.dataset.claim;
     $('#claim-what').textContent = data.items.find((i) => i.id === pendingId).title;
     form.reset();
+    form.elements.wachtwoord.value = linkPassword; // empty unless they came in through a share link
     $('#claim-error').textContent = '';
     dialog.showModal();
   }

@@ -241,6 +241,21 @@ const SPR = {
     '.....dg.....dg....',
     '.....dd.....dd....',
   ],
+  // Show/hide toggle for the password in the key tag
+  eyeOpen: [
+    '...KKK...',
+    '.KKwwwKK.',
+    'KwwwKwwwK',
+    '.KKwwwKK.',
+    '...KKK...',
+  ],
+  eyeClosed: [
+    '.........',
+    'K.......K',
+    '.KKKKKKK.',
+    '..K.K.K..',
+    '.........',
+  ],
   heart: [
     '.PP.PP.',
     'PPPPPPP',

@@ -222,6 +222,21 @@ body {
 .mine-box { cursor: default; display: flex; justify-content: space-between; align-items: center; }
 .mine-box b { background: var(--ink); color: var(--gold); padding: 3px 6px; }
 
+/* The password from a share link, shown like a brass key tag. */
+.key-box {
+  margin: 0; padding: 8px 10px; font: 8px/1.6 var(--pixel); color: var(--ink);
+  background: linear-gradient(#f1dfa6, #d9b968); border: 3px outset #f6e9c2;
+}
+.key-box[hidden] { display: none; }
+.key-box__head { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.key-eye { padding: 3px; line-height: 0; cursor: pointer; background: none; border: 0; }
+.key-eye svg { width: 18px; height: 10px; }
+.key-eye:hover svg { filter: drop-shadow(0 0 2px #fff); }
+.key-box b {
+  display: block; margin-top: 6px; padding: 4px 6px; font-size: 10px; letter-spacing: 1px;
+  color: var(--gold); background: var(--ink); overflow-wrap: anywhere; user-select: all;
+}
+
 .widget { margin: 0; padding: 8px; background: #050505; border: 3px inset #555; color: var(--steel); text-align: center; font: 8px/1.6 var(--pixel); }
 .widget p { margin: 4px 0; }
 .counter { font-size: 16px; letter-spacing: 2px; color: #ff3b3b; text-shadow: 0 0 6px #ff3b3b; }
@@ -490,7 +505,7 @@ dialog input { display: block; width: 100%; margin-top: 4px; padding: 6px; font:
   .layout { grid-template-columns: 1fr; padding: 12px; }
   .nav { flex-direction: row; flex-wrap: wrap; }
   .widgets { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .mine-box { grid-column: 1 / -1; }
+  .mine-box, .key-box { grid-column: 1 / -1; }
   .item { grid-template-columns: 72px 1fr; gap: 12px; }
   .item__img { width: 72px; height: 64px; font-size: 28px; }
 }

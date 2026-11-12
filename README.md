@@ -23,6 +23,8 @@ Each item in `public/items.json`:
 | `links` | optional list of `{ "shop", "url", "priceCents" }` |
 | `perpetual` | `true` = "altijd welkom", cannot be claimed |
 
+**Share link with the password:** `https://wishlist.<yourdomain>.dev/#wachtwoord=<password>` shows the password on the page (🔑 in the sidebar) and fills it into the claim form, so visitors only type their name. Use `#`, not `?`: the part after `#` never reaches the server, so the password stays out of its logs. (`?wachtwoord=` works too.)
+
 **Pictures:** put a photo named after the item's `id` in `public/img/` (e.g. `public/img/skull-king.jpg`, `.png` or `.webp`, matching capitals exactly). It replaces the emoji automatically.
 
 ## Run locally
